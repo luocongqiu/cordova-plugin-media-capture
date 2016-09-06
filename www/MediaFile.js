@@ -17,7 +17,7 @@
  * specific language governing permissions and limitations
  * under the License.
  *
-*/
+ */
 
 var utils = require('cordova/utils'),
     exec = require('cordova/exec'),
@@ -32,7 +32,7 @@ var utils = require('cordova/utils'),
  * lastModifiedDate {Date} last modified date
  * size {Number} size of the file in bytes
  */
-var MediaFile = function(name, localURL, type, lastModifiedDate, size){
+var MediaFile = function (name, localURL, type, lastModifiedDate, size) {
     MediaFile.__super__.constructor.apply(this, arguments);
 };
 
@@ -41,14 +41,14 @@ utils.extend(MediaFile, File);
 /**
  * Request capture format data for a specific file and type
  *
- * @param {Function} successCB
- * @param {Function} errorCB
+ * @param {Function} successCallback
+ * @param {Function} errorCallback
  */
-MediaFile.prototype.getFormatData = function(successCallback, errorCallback) {
+MediaFile.prototype.getFormatData = function (successCallback, errorCallback) {
     if (typeof this.fullPath === "undefined" || this.fullPath === null) {
         errorCallback(new CaptureError(CaptureError.CAPTURE_INVALID_ARGUMENT));
     } else {
-        exec(successCallback, errorCallback, "Capture", "getFormatData", [this.localURL, this.type]);
+        exec(successCallback, errorCallback, "Capture", "getFormatData", [this.fullPath, this.type]);
     }
 };
 
