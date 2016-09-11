@@ -87,6 +87,7 @@
             <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
         </config-file>
 
+        <source-file src="src/android/CameraHelper.java" target-dir="src/org/apache/cordova/mediacapture"/>
         <source-file src="src/android/Capture.java" target-dir="src/org/apache/cordova/mediacapture"/>
         <source-file src="src/android/FileHelper.java" target-dir="src/org/apache/cordova/mediacapture"/>
         <source-file src="src/android/PendingRequests.java" target-dir="src/org/apache/cordova/mediacapture"/>
