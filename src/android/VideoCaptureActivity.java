@@ -104,7 +104,6 @@ public class VideoCaptureActivity extends Activity {
                     camera = CameraHelper.getDefaultFrontFacingCameraInstance();
                 }
 
-
                 Camera.Parameters parameters = camera.getParameters();
                 int w = surfaceView.getWidth();
                 int h = surfaceView.getHeight();
@@ -211,14 +210,15 @@ public class VideoCaptureActivity extends Activity {
             recorder.setCamera(camera);
 
             recorder.setOrientationHint(90);//视频旋转90度
-            recorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
-            recorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
 
+            recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+            recorder.setVideoSource(MediaRecorder.VideoSource.DEFAULT);
             recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
-            recorder.setVideoEncodingBitRate(1024 * 512);
+            recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
             recorder.setVideoEncoder(MediaRecorder.VideoEncoder.H264);
+
+            recorder.setVideoEncodingBitRate(1024 * 1024);
             recorder.setVideoSize(this.size.width, this.size.height);
-            recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
 
             outputFile = CameraHelper.getOutputMediaFile(CameraHelper.MEDIA_TYPE_VIDEO);
             if (outputFile == null) {
